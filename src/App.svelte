@@ -2,7 +2,7 @@
 	import copy from 'copy-to-clipboard';
 
 	const normal = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz']
-	const italic = [...'5555555555555555555555555555555555555555555555555555']
+	const italic = [...'𝘈𝘉𝘊𝘋𝘌𝘍𝘎𝘏𝘐𝘑𝘒𝘓𝘔𝘕𝘖𝘗𝘘𝘙𝘚𝘛𝘜𝘝𝘞𝘟𝘠𝘡𝘢𝘣𝘤𝘥𝘦𝘧𝘨𝘩𝘪𝘫𝘬𝘭𝘮𝘯𝘰𝘱𝘲𝘳𝘴𝘵𝘶𝘷𝘸𝘹𝘺𝘻']
 
 	function convert(str) {
 		const [a, b] = [...str].reduce(([a, b], char) => [a + ( normal.includes(char) ? 1 : 0), b + (italic.includes(char) ? 1 : 0)], [0, 0])
@@ -10,9 +10,7 @@
 		let result = ''
 		for (let char of str.normalize('NFD')) {
 			let [a, b] = reversed ? [italic, normal] : [normal, italic]
-			console.log(a, b)
 			let index = a.indexOf(char)
-			console.log(index)
 			if (index > -1) {
 				result += b[index]
 			} else {
